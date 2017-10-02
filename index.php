@@ -61,21 +61,24 @@
 	$is_leap_year = false;
 	foreach ($year as $yr) {
 		$yr = (int)$yr;
-		if ($yr % 4 == 0) {
-			if ($yr % 100 == 0) {
-				if ($yr % 400 == 0) {
-					$is_leap_year = true;
+		switch ($yr % 4) {
+			case 0:
+				if ($yr % 100 == 0) {
+					if ($yr % 400 == 0) {
+						$is_leap_year = true;
+					}
+					else {
+						$is_leap_year = false;
+					}
 				}
 				else {
-					$is_leap_year = false;
+					$is_leap_year = true;
 				}
-			}
-			else {
-				$is_leap_year = true;
-			}
-		}
-		else {
-			$is_leap_year = false;
+				break;
+			
+			default:
+				$is_leap_year = false;
+				break;
 		}
 		echo $yr. ": ";
 		echo $is_leap_year ? 'True' : 'False'; 
